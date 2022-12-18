@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="{% url 'home' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="{% static 'img\logo1.png' %}"
+                     alt="My image"
+                     width='45'
+                     height="45"
+                >
+                <span class="fs-4">
+                    {% if request.user.is_authenticated %}
+                      Добро пожаловать, {{user.username}}
+                    {% else %}
+                        demius6
+                    {% endif %}
+                </span>
+            </a>
+            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                {% if request.user.is_authenticated %}
+                    <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'home' %}">Main Page</a>
+                    <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'about' %}">About us</a>
+                    <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'create' %}">Create task</a>
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+                    </form>
+                    <div>
+                        <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'logout' %}">
+                            <button type="button" class="btn btn-warning">Logout</button>
+                        </a>
+                    </div>
+
+                {% else %}
+
+                    <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'home' %}">Main Page</a>
+                    <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'about' %}">About us</a>
+
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+                    </form>
+                    <div>
+                        <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'register' %}">
+                            <button type="button" class="btn btn-warning">Sign-up</button>
+                        </a>
+                        <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'login' %}">
+                            <button type="button" class="btn btn-outline-light me-2">Login</button>
+                        </a>
+                    </div>
+                {% endif%}
+
+            </nav>
+          </div>
+        </div>
+  </header>
+
+    <div class="container">
+        {% block content %} {% endblock %}
+    </div>
+
+    <div class="col-md-9">
+        {% if messages %}
+
+        {% for message in messages %}
+
+            {% if message.tags == 'error' %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+            {% else %}
+                <div class="alert alert-{{message.tags}}" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+
+        {% endif %}
+    </div>
+
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+          </a>
+          <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+        </div>
+
+        <ul class="list-unstyled d-flex">
+            <li class="ms-3"><a class="link-dark" href="https://www.instagram.com" target='_blank'><img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2016/240/iconmonstr-instagram-11.png"  alt="Instagram 11" width="24" height="24"></a></li>
+            <li class="ms-3"><a class="link-dark" href="https://www.instagram.com" target='_blank'><img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2016/240/iconmonstr-instagram-11.png"  alt="Instagram 11" width="24" height="24"></a></li>
+            <li class="ms-3"><a class="link-dark" href="https://www.instagram.com" target='_blank'><img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2016/240/iconmonstr-instagram-11.png"  alt="Instagram 11" width="24" height="24"></a></li>
+        </ul>
+      </footer>
+    </div>
+
+</body>
+</html>

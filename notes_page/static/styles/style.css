@@ -1,0 +1,66 @@
+
+.tasks-wrap{
+
+    background: url('background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: auto;
+}
+
+.tasks-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+
+}
+.tasks{
+    margin: 50px 6px 6px 6px;
+    width:100%;
+    justify-content:left;
+    flex-wrap:wrap;
+}
+
+.tasks-col{
+
+    margin-bottom: 20px;
+}
+
+.task-card{
+
+    height: 200px;
+    background: Silver;
+    box-shadow: 0 4px 8px 0 MediumPurple;
+    opacity: 0.7;
+    border: solid 1px Gainsboro;
+    border-radius: 10% / 50%;
+    transition: border-radius 0.2s ease-in;
+    padding: 10px;
+
+}
+.task-card:hover {
+    border-radius: 16px;
+    background: DarkGrey;
+    opacity: 0.9;
+}
+
+
+.card-header{
+
+  text-align: center;
+  margin-top: 12px;
+
+  font-weight: 600;
+  font-size: 32px;
+  color: #007765;
+  white-space: normal;
+
+}
+
+.card-text{
+  white-space: normal;
+  text-align: center;
+  font-style: italic;
+  font-size: 18px;
+}
+

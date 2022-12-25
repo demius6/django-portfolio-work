@@ -51,6 +51,9 @@ class UpdateTask(UpdateView):
     context = {'title': 'Yakimovich Aliaksandr'}
     form_class = TaskForm
 
+class DeleteTask(DeleteView):
+    pass
+
 
 
 def register(request):

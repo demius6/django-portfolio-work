@@ -1,5 +1,8 @@
 <!doctype html>
 <html lang="en">
+
+
+
 <head>
     {% load static %}
     <meta charset="UTF-8">
@@ -8,11 +11,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <header class="p-3 text-bg-dark">
         <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <div class=" d-flex flex-wrap align-items-center justify-content-center">
             <a href="{% url 'home' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                 <img src="{% static 'img\logo1.png' %}"
                      alt="My image"
@@ -32,9 +40,6 @@
                     <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'home' %}">Main Page</a>
                     <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'about' %}">About us</a>
                     <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'create' %}">Create task</a>
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-                    </form>
                     <div>
                         <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'logout' %}">
                             <button type="button" class="btn btn-warning">Logout</button>
@@ -45,10 +50,6 @@
 
                     <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'home' %}">Main Page</a>
                     <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'about' %}">About us</a>
-
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-                    </form>
                     <div>
                         <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'register' %}">
                             <button type="button" class="btn btn-warning">Sign-up</button>
@@ -63,11 +64,13 @@
           </div>
         </div>
   </header>
-
-    <div class="container">
-        {% block content %} {% endblock %}
+    <div class="tasks-wrap">
+        <div class="tasks-container">
+            <div class="tasks row row-cols-1 row-cols-md-2 row-cols-xl-3">
+                {% block content %} {% endblock %}
+            </div>
+        </div>
     </div>
-
     <div class="col-md-9">
         {% if messages %}
 
@@ -98,9 +101,9 @@
         </div>
 
         <ul class="list-unstyled d-flex">
-            <li class="ms-3"><a class="link-dark" href="https://www.instagram.com" target='_blank'><img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2016/240/iconmonstr-instagram-11.png"  alt="Instagram 11" width="24" height="24"></a></li>
-            <li class="ms-3"><a class="link-dark" href="https://www.instagram.com" target='_blank'><img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2016/240/iconmonstr-instagram-11.png"  alt="Instagram 11" width="24" height="24"></a></li>
-            <li class="ms-3"><a class="link-dark" href="https://www.instagram.com" target='_blank'><img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2016/240/iconmonstr-instagram-11.png"  alt="Instagram 11" width="24" height="24"></a></li>
+            <li class="ms-3"><a class="link-dark" href="https://www.instagram.com" target='_blank'><img src="{% static 'img\logo_inst.png' %}" alt="inst logo" width="20" height="20"></a></li>
+            <li class="ms-3"><a class="link-dark" href="https://t.me/demius6" target='_blank'><img src="{% static 'img\logo_tg.png' %}"  alt="tg logo" width="24" height="24"></a></li>
+            <li class="ms-3"><a class="link-dark" href="mailto:yakimovich.99@mail.ru" target='_blank'><img src="{% static 'img\logo_mail.png' %}"  alt="mail logo" width="24" height="27"></a></li>
         </ul>
       </footer>
     </div>
